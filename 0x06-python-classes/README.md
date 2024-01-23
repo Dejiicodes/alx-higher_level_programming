@@ -1,6 +1,6 @@
 # Classes and Objects
 
-Project done during **Full Stack Software Engineering Program** at **ALX Full Stack Software Engineering Program**. It aims to learn about object oriented programming (OOP), classes, objects, instances, methods and attributes in **Python**.
+Project done during **Full-Stack Software Engineering Program** at **ALX Full-Stack Software Engineering Program**. It aims to learn about object oriented programming (OOP), classes, objects, instances, methods and attributes in **Python**.
 
 ## Technologies
 * Python Scripts are written with Python 3.8.5
