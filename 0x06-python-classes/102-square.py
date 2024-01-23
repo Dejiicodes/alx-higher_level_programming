@@ -26,11 +26,11 @@ class Square:
             value (int): The size of the square.
 
         Raises:
-            TypeError: If `value` is not a number (float or integer).
+            TypeError: If `value` is not an integer.
             ValueError: If `value` is less than 0.
         """
-        if not isinstance(value, (int, float)):
-            raise TypeError("size must be a number")
+        if not isinstance(value, int):
+            raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
@@ -39,7 +39,7 @@ class Square:
         """Calculates the area of the square.
 
         Returns:
-            float: The area of the square.
+            int: The area of the square.
         """
         return self.__size ** 2
 
@@ -66,3 +66,21 @@ class Square:
     def __ge__(self, other):
         """Checks if the area of the current square is greater than or equal to the area of another square."""
         return self.area() >= other.area()
+
+
+if __name__ == "__main__":
+    s_5 = Square(5)
+    s_6 = Square(6)
+
+    if s_5 < s_6:
+        print("Square 5 < Square 6")
+    if s_5 <= s_6:
+        print("Square 5 <= Square 6")
+    if s_5 == s_6:
+        print("Square 5 == Square 6")
+    if s_5 != s_6:
+        print("Square 5 != Square 6")
+    if s_5 > s_6:
+        print("Square 5 > Square 6")
+    if s_5 >= s_6:
+        print("Square 5 >= Square 6")
