@@ -2,6 +2,7 @@
 """Defines a class that does the same as the given Python bytecode."""
 import math
 
+
 class MagicClass:
     """Defines a class that does the same as the given Python bytecode."""
 

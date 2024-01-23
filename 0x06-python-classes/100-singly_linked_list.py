@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """Defines a singly linked list and its nodes."""
+
+
 class Node:
     """Defines a node of a singly linked list."""
-    
+
     def __init__(self, data, next_node=None):
         """Initializes a new node.
 
