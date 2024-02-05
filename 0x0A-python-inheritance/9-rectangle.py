@@ -1,21 +1,33 @@
 #!/usr/bin/python3
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+class BaseGeometry:
+    """Base class for geometry."""
+
+    def area(self):
+        """Raise an Exception with the message area() is not implemented."""
+        raise Exception("area() is not implemented")
+
+    def integer_validator(self, name, value):
+        """Validate value as an integer."""
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))
+
+    def __str__(self):
+        """Return a string representation of the object."""
+        return "[{}] {}/{}".format(type(self).__name__, self.__width, self.__height)
 
 class Rectangle(BaseGeometry):
-    """ Class that defines a rectangle from BaseGeometry Class """
+    """Subclass of BaseGeometry for rectangles."""
 
     def __init__(self, width, height):
-        """ Initializes instance """
+        """Initialize a Rectangle instance with width and height."""
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
 
     def area(self):
-        """ Method that returns the area of the instance"""
+        """Return the area of the rectangle."""
         return self.__width * self.__height
-
-    def __str__(self):
-        """ Special method that returns the printable string """
-        return "[Rectangle] {:d}/{:d}".format(self.__width, self.__height)

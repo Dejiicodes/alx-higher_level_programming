@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+
 class MyInt(int):
-    """ Class that inherits from class int"""
+    """Subclass of int with == and != operators inverted."""
 
     def __eq__(self, other):
-        """ Method that returns != check """
-        return int.__ne__(self, other)
+        """Return True if self is not equal to other."""
+        return super().__ne__(other)
 
     def __ne__(self, other):
-        """ Method that returns == check """
-        return int.__eq__(self, other)
+        """Return True if self is equal to other."""
+        return super().__eq__(other)
