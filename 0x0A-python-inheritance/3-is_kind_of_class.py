@@ -1,7 +1,10 @@
+#!/usr/bin/python3
+
 def is_kind_of_class(obj, a_class):
-    """Checks if an object is an instance of a class or inherited from it."""
+    """Checks if an object is an instance of a class or an instance of a class that inherited from the specified class."""
     return isinstance(obj, a_class)
 
 # Test cases
-print(is_kind_of_class(1, int))   # True
-print(is_kind_of_class(True, int))   # False
+a = 1
+print(is_kind_of_class(a, int))  # True
+print(is_kind_of_class(a, float))  # False

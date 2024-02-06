@@ -1,14 +1,12 @@
+#!/usr/bin/python3
+
 def add_attribute(obj, name, value):
     """Adds an attribute to an object if possible."""
-    if hasattr(obj, "__dict__"):
-        setattr(obj, name, value)
-    else:
+    if not hasattr(obj, "__dict__"):
         raise TypeError("can't add new attribute")
+    setattr(obj, name, value)
 
 # Test cases
-class MyClass:
-    pass
-
-mc = MyClass()
-add_attribute(mc, "name", "John")
-print(mc.name)
+a = "My String"
+add_attribute(a, "hbtn", "Holberton")
+print(a.name)
