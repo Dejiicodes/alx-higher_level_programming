@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-MyClass = __import__('8-my_class_2').MyClass
-class_to_json = __import__('8-class_to_json').class_to_json
+"""Script that imports a class from a file and creates an instance"""
+from my_class_2 import MyClass
 
-m = MyClass("John")
-m.win()
-print(type(m))
-print(m)
+def main():
+    obj = MyClass()
+    print(obj.__dict__)
 
-mj = class_to_json(m)
-print(type(mj))
-print(mj)
+if __name__ == "__main__":
+    main()
