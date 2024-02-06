@@ -6,13 +6,16 @@ def lookup(obj):
     """Return the list of available attributes and methods of an object."""
     return dir(obj)
 
+
 # Example usage
 if __name__ == "__main__":
     class MyClass1(object):
         pass
 
+
     class MyClass2(object):
         my_attr1 = 3
+
         def my_meth(self):
             pass
 
