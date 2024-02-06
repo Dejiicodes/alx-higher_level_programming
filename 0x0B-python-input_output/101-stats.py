@@ -1,21 +1,33 @@
 #!/usr/bin/python3
-"""
-This module defines a function to multiply each value in a dictionary by 2.
-"""
+import sys
 
-def multiply_by_2(a_dictionary):
-    """
-    Multiplies each value in a dictionary by 2.
+def print_metrics(total_size, status_counts):
+    print("File size: {}".format(total_size))
+    for status_code, count in sorted(status_counts.items()):
+        print("{}: {}".format(status_code, count))
 
-    Args:
-        a_dictionary (dict): The dictionary whose values are to be multiplied.
-
-    Returns:
-        dict: A new dictionary with the values multiplied by 2.
-    """
-    return {key: value * 2 for key, value in a_dictionary.items()}
+def main():
+    total_size = 0
+    status_counts = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    try:
+        line_count = 0
+        for line in sys.stdin:
+            if line_count % 10 == 0 and line_count > 0:
+                print_metrics(total_size, status_counts)
+            line_count += 1
+            parts = line.split()
+            if len(parts) >= 9:
+                try:
+                    size = int(parts[-1])
+                    status_code = int(parts[-2])
+                    total_size += size
+                    if status_code in status_counts:
+                        status_counts[status_code] += 1
+                except ValueError:
+                    pass
+    except KeyboardInterrupt:
+        pass
+    print_metrics(total_size, status_counts)
 
 if __name__ == "__main__":
-    my_dict = {'a': 1, 'b': 2, 'c': 3}
-    new_dict = multiply_by_2(my_dict)
-    print(new_dict)
+    main()
