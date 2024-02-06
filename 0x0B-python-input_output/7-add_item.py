@@ -1,30 +1,25 @@
 #!/usr/bin/python3
 """
-This module defines a function to load, add, and save to a JSON file.
+Script that adds all arguments to a Python list, and then save them to a file.
 """
 
-import json
+import sys
+import os.path
 
-def add_item_to_json_file(filename, key, value):
-    """
-    Loads a JSON file, adds a new key-value pair, and saves the updated JSON to the file.
+args = sys.argv[1:]
 
-    Args:
-        filename (str): The name of the JSON file to load from and save to.
-        key: The key to add to the JSON.
-        value: The value associated with the key.
-    """
-    try:
-        with open(filename, mode='r', encoding='utf-8') as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        data = {}
-    data[key] = value
-    with open(filename, mode='w', encoding='utf-8') as file:
-        json.dump(data, file)
+if not os.path.exists("add_item.json"):
+    with open("add_item.json", "w") as file:
+        file.write("[]")
 
-if __name__ == "__main__":
-    filename = "add_item.json"
-    key = "name"
-    value = "John"
-    add_item_to_json_file(filename, key, value)
+with open("add_item.json", "r") as file:
+    data = file.read()
+    if data:
+        items = eval(data)
+    else:
+        items = []
+
+items.extend(args)
+
+with open("add_item.json", "w") as file:
+    file.write(str(items))
