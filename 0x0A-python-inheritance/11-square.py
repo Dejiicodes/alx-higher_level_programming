@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+This module defines a BaseGeometry class, a Rectangle class, and a Square class.
+"""
+
+
 class BaseGeometry:
     """Base geometry class."""
 

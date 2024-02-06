@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+This module defines a function to add an attribute to an object.
+"""
+
+
 def add_attribute(obj, name, value):
     """Adds an attribute to an object if possible."""
     if not hasattr(obj, "__dict__"):
