@@ -1,15 +1,22 @@
 #!/usr/bin/python3
-import random
-import sys
-from time import sleep
-import datetime
+"""
+This module defines a function to update a dictionary with a new key-value pair.
+"""
 
-for i in range(10000):
-    sleep(random.random())
-    sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
-        random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
-        datetime.datetime.now(),
-        random.choice([200, 301, 400, 401, 403, 404, 405, 500]),
-        random.randint(1, 1024)
-    ))
-    sys.stdout.flush()
+def update_dictionary(a_dictionary, key, value):
+    """
+    Updates a dictionary with a new key-value pair.
+
+    Args:
+        a_dictionary (dict): The dictionary to be updated.
+        key: The key to be added or updated.
+        value: The value to be associated with the key.
+    """
+    a_dictionary[key] = value
+
+if __name__ == "__main__":
+    d = {'language': "C", 'number': 89, 'track': "Low level"}
+    update_dictionary(d, 'language', "Python")
+    print(d)
+    update_dictionary(d, 'city', "San Francisco")
+    print(d)
