@@ -1,37 +1,44 @@
-#!/usr/bin/python3
-
 class BaseGeometry:
     """Base class for geometry."""
 
     def area(self):
-        """Raise an Exception with the message area() is not implemented."""
-        raise Exception("area() is not implemented")
+        """Area method."""
+        raise NotImplementedError("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """Validate value as an integer."""
+        """Validates an integer value."""
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(name))
+            raise TypeError(f"{name} must be an integer")
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError(f"{name} must be greater than 0")
 
 class Rectangle(BaseGeometry):
-    """Subclass of BaseGeometry for rectangles."""
+    """Rectangle class inheriting from BaseGeometry."""
 
     def __init__(self, width, height):
-        """Initialize a Rectangle instance with width and height."""
+        """Initializes a Rectangle instance with width and height."""
+        super().__init__()
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
 
+    def __str__(self):
+        """Returns a string representation of the Rectangle."""
+        return f"[Rectangle] {self.__width}/{self.__height}"
+
     def area(self):
-        """Return the area of the rectangle."""
+        """Calculates the area of the Rectangle."""
         return self.__width * self.__height
 
 class Square(Rectangle):
-    """Subclass of Rectangle for squares."""
+    """Square class inheriting from Rectangle."""
 
     def __init__(self, size):
-        """Initialize a Square instance with size."""
+        """Initializes a Square instance with size."""
         super().__init__(size, size)
         self.__size = size
+
+# Test case
+s = Square(4)
+print(s.area())
