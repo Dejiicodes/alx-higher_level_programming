@@ -12,10 +12,15 @@ if __name__ == "__main__":
 
     try:
         data['q'] = sys.argv[1]
-    except:
+    except IndexError:
         pass
 
-    r = requests.post('http://0.0.0.0:5000/search_user', data)
+    try:
+        r = requests.post('http://0.0.0.0:5000/search_user', data)
+        r.raise_for_status()  # Raise an exception for 4xx/5xx status codes
+    except requests.exceptions.RequestException as e:
+        print("Error: {}".format(e))
+        sys.exit(1)
 
     try:
         json_o = r.json()
@@ -23,5 +28,5 @@ if __name__ == "__main__":
             print("No result")
         else:
             print("[{}] {}".format(json_o.get('id'), json_o.get('name')))
-    except:
+    except ValueError:
         print("Not a valid JSON")
